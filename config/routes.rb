@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  resources :pictures
-
   resources :authors do
-    resources :pictures
-    
-    resources :books do
-      resources :pictures
-    end
+    resources :books
   end
 end

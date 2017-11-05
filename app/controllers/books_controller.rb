@@ -18,16 +18,37 @@ class BooksController < ApplicationController
   def create
     @book = @author.books.new(book_params)
 
-    if @book.save
-      render json: @book, status: :created
-    else
-      render json: @book.errors, status: :unprocessable_entity
+    if params[:picture]
+      @picture = Picture.new(picture_params)
+      @picture.imageable = @book
+
+      if @picture.save
+        render json: @book, status: :created
+        return
+      else
+        render json: @book.errors, status: :unprocessable_entity
+      end
     end
+
+    if @book.save
+        render json: @book, status: :created        
+        # return
+      else
+        render json: @book.errors, status: :unprocessable_entity
+      end
   end
 
   # PATCH/PUT /books/1
   def update
-    if @book.update(book_params)
+    if params[:picture]
+      if @book.pictures.where(id: params[:picture][:id]).update(path: params[:picture][:path])
+        render json: @book.pictures.where(id: params[:picture][:id])
+        return
+      else
+        render json: @book.errors, status: :unprocessable_entity
+      end     
+    end
+    if @book.update(book_params)      
       render json: @book
     else
       render json: @book.errors, status: :unprocessable_entity
@@ -52,5 +73,9 @@ class BooksController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def book_params
       params.require(:book).permit(:title)
+    end
+
+    def picture_params
+      params.require(:picture).permit(:path)
     end
   end
