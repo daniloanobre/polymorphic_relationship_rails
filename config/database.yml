@@ -91,7 +91,7 @@ development:
 production:
   adapter: postgresql
   host: 127.0.0.1
-  database: directional_boring_api_production
+  database: author_books_example_api_production
   username: deploy
   password: deploy
   encoding: unicode
