@@ -157,7 +157,6 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   byebug
   capistrano (~> 3.7, >= 3.7.1)
-  capistrano-bundler
   capistrano-passenger (~> 0.2.0)
   capistrano-rails (~> 1.2)
   capistrano-rvm
