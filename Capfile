@@ -20,10 +20,9 @@ require "capistrano/deploy"
  
 # Include capistrano-rails
 require 'capistrano/rails'
-require 'capistrano/rvm'
-require 'capistrano/bundler'
-require 'capistrano/rails/migrations'
-require 'capistrano/rails/assets'
+# require 'capistrano/rvm'
+# require 'capistrano/bundler'
+# require 'capistrano/rails/migrations'
 
 # If you are using rvm add these lines:
 require 'capistrano/rvm'
