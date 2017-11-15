@@ -23,7 +23,7 @@ require 'capistrano/rails'
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
-# require 'capistrano/rails/assets'
+require 'capistrano/rails/assets'
 
 # If you are using rvm add these lines:
 require 'capistrano/rvm'
