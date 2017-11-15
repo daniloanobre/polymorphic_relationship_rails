@@ -32,10 +32,15 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # Use Capistrano for deployment
-  gem 'capistrano', '~> 3.7', '>= 3.7.1'
+  # gem 'capistrano', '~> 3.7', '>= 3.7.1'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-passenger', '~> 0.2.0'
-  gem 'capistrano-rvm'
+  # gem 'capistrano-rvm'
+
+  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler', '>= 1.1.0'
+  gem 'capistrano-rvm', git: 'git@github.com:capistrano/rvm.git'
 end
 
 group :development do
