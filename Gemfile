@@ -40,7 +40,7 @@ group :development do
 
   # gem 'capistrano', '~> 3.6'
   # gem 'capistrano-rails', '~> 1.1'
-  # gem 'capistrano-rvm'
+  gem 'capistrano-rvm'
 end
 gem 'capistrano-rails', group: :development
 
