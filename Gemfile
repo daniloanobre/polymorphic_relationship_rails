@@ -40,6 +40,7 @@ group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-rvm'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
