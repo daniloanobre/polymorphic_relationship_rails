@@ -37,5 +37,11 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require 'capistrano/rbenv'
 
+set :scm, :git
+set :branch, "master"
+set :user, "deploy"
+set :scm_passphrase, "deploy"
+set :rails_env, "production"
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
