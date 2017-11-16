@@ -40,6 +40,11 @@ set :repo_url, "https://github.com/daniloanobre/polymorphic_relationship_rails.g
 
 
 set :deploy_to, '/home/deploy/polymorphic_relationship_rails'
+set :scm, :git
+set :branch, "master"
+set :user, "deploy"
+set :scm_passphrase, "deploy"
+set :rails_env, "production"
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
