@@ -99,11 +99,6 @@ namespace :puma do
   before :start, :make_dirs
 end
 
-before :starting,     "deploy:check_revision"
-# after  :finishing,    :compile_assets
-after  :finishing,    :cleanup
-after  :finishing,    "deploy:restart"
-
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
@@ -129,5 +124,10 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       invoke 'puma:restart'
     end
-  end  
+  end
+
+  before :starting,     :check_revision
+  # after  :finishing,    :compile_assets
+  after  :finishing,    :cleanup
+  after  :finishing,    :restart
 end
