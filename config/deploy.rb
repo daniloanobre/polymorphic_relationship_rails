@@ -50,7 +50,7 @@
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
 
-require "bundler/capistrano"
+# require "bundler/capistrano"
 # Change these
 server 'ec2-54-187-150-55.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app db web}
 
