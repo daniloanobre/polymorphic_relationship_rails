@@ -40,7 +40,7 @@ set :repo_url, "https://github.com/daniloanobre/polymorphic_relationship_rails.g
 
 
 set :deploy_to, '/home/deploy/polymorphic_relationship_rails'
-set :scm, :git
+# set :scm, :git
 set :branch, "master"
 set :user, "deploy"
 set :scm_passphrase, "deploy"
