@@ -48,3 +48,12 @@ set :rails_env, "production"
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+
+desc "Restart Passenger app"
+task :restart do
+  run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
+end
+
+after "deploy", "deploy:symlink_config_files"
+after "deploy", "deploy:restart"
+after "deploy", "deploy:cleanup"
