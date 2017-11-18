@@ -61,7 +61,6 @@ set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
 # Don't change these unless you know what you're doing
-set :scm_passphrase, "deploy"
 set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
@@ -127,12 +126,8 @@ namespace :deploy do
     end
   end
 
+  before :starting,     :check_revision
+  after  :finishing,    :compile_assets
+  after  :finishing,    :cleanup
+  after  :finishing,    :restart
 end
-before :starting,     :check_revision
-after  :finishing,    :compile_assets
-after  :finishing,    :cleanup
-after  :finishing,    :restart
-
-# ps aux | grep puma    # Get puma pid
-# kill -s SIGUSR2 pid   # Restart puma
-# kill -s SIGTERM pid   # Stop puma
