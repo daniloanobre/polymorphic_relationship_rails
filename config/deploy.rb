@@ -49,14 +49,14 @@ set :rails_env, "production"
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-after "deploy", "deploy:symlink_config_files"
+# after "deploy", "deploy:symlink_config_files"
 after "deploy", "deploy:restart"
 after "deploy", "deploy:cleanup"
 
-desc "Symlink shared config files"
-task :symlink_config_files do
-    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
-end
+# desc "Symlink shared config files"
+# task :symlink_config_files do
+#     run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
+# end
 
 desc "Restart Passenger app"
 task :restart do
