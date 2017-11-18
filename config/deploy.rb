@@ -107,7 +107,6 @@ namespace :deploy do
       execute "mkdir #{shared_path}/config -p"
       upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
       upload! StringIO.new(File.read("config/secrets.yml")), "#{shared_path}/config/secrets.yml"
-      # upload! StringIO.new(File.read("config/application.yml")), "#{shared_path}/config/application.yml"
     end
   end
 
@@ -130,15 +129,15 @@ namespace :deploy do
     end
   end
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
+  # desc 'Restart application'
+  # task :restart do
+  #   on roles(:app), in: :sequence, wait: 5 do
+  #     invoke 'puma:restart'
+  #   end
+  # end
 
+  before :starting,     :upload_yml
   before :starting,     :check_revision
-  # after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :finishing,    :restart
+  # after  :finishing,    :restart
 end
